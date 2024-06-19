@@ -11,7 +11,7 @@ for lr in 6e-5 ; do
             --data_path ./data/alphageometry/dataset_reinforce_100k/data.json \
             --image_folder ./data/alphageometry/dataset_reinforce_100k/ \
             --bf16 True \
-            --output_dir ./checkpoints/mmpvisionlora-529-lr${lr}-epoch${epoch}-100k \
+            --output_dir ./checkpoints/llava-100k \
             --num_train_epochs $epoch \
             --per_device_train_batch_size 64 \
             --per_device_eval_batch_size 4 \
@@ -40,11 +40,11 @@ for lr in 6e-5 ; do
         echo lr ${lr} epoch ${epoch} 
         torchrun llava/eval/model_vqa.py \
         --model-path liuhaotian/llava-v1.5-7b \
-        --pretrain_mm_mlp_adapter ./checkpoints/mmpvisionlora-529-lr${lr}-epoch${epoch}-100k/non_lora_trainables.bin \
-        --lora_ckpt ./checkpoints/mmpvisionlora-529-lr${lr}-epoch${epoch}-100k/  \
+        --pretrain_mm_mlp_adapter ./checkpoints/llava-100k/non_lora_trainables.bin \
+        --lora_ckpt ./checkpoints/llava-100k/  \
         --question-file data/questions/question.jsonl \
         --image-folder data/alphageometry/dataset_test/img/ \
-        --answers-file output/answer-file-7b-mmpvision-529-lr${lr}-epoch${epoch}-100k-new.jsonl 
+        --answers-file output/answer-file-7b-mmpvision-lr${lr}-epoch${epoch}-100k.jsonl 
     done
 done
 
@@ -55,7 +55,7 @@ for lr in 6e-5 ; do
         echo lr ${lr} epoch ${epoch} 
         python -m llava.eval.eval_score \
             --annotation-file ./data/alphageometry/dataset_test/data.json \
-            --result-file output/answer-file-7b-mmpvision-529-lr${lr}-epoch${epoch}-100k-new.jsonl
+            --result-file output/answer-file-7b-mmpvision-lr${lr}-epoch${epoch}-100k.jsonl
     done
 done
 

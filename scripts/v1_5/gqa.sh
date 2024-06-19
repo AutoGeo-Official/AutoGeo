@@ -9,8 +9,8 @@ for lr in 6e-5 ; do
             --tune_mm_mlp_adapter True \
             --tune_vision False \
             --model_name_or_path liuhaotian/llava-v1.5-7b \
-            --pretrain_mm_mlp_adapter ./checkpoints/mmpvisionlora-529-lr6e-5-epoch2-100k/non_lora_trainables.bin \
-            --lora_ckpt ./checkpoints/mmpvisionlora-529-lr6e-5-epoch2-100k/  \
+            --pretrain_mm_mlp_adapter ./checkpoints/llava-100k/non_lora_trainables.bin \
+            --lora_ckpt ./checkpoints/llava-100k/  \
             --data_path ./playground/data/qa_tuning.json \
             --image_folder ./playground/data/images \
             --bf16 True \
