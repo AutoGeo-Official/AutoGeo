@@ -13,3 +13,6 @@ To generate data, you can run:
 ```
 python generate_datasets_multiprocess-reinforce.py
 ```
+
+## Download
+If you do not want to generate by yourself, you can also download from: https://drive.google.com/drive/folders/1dO6u1HEXeoPm0nihWsUygAPEjTamZHIA?usp=drive_link
