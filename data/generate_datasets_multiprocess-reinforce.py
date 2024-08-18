@@ -1,31 +1,17 @@
 import sys
-
+import os
 sys.path.append('..')
 
 from utils.loading_utils import load_definitions_and_rules
-
 import random
 import graph as gh
 import problem as pr
-from clause_generation import CompoundClauseGen
+from clause_generation import *
 import signal
-
 import multiprocessing
 from pretty_problem_statement_dict import * # 改为经过语料扩展的结果
-
 import json
-
 from data_augmentation.opencv import *
-
-class TimeoutException(Exception):
-    """Custom exception to indicate a timeout."""
-    pass
-
-
-def signal_handler(signum, frame):
-    """Signal handler that raises a TimeoutException."""
-    raise TimeoutException("Operation timed out due to signal 14 (SIGALRM)")
-
 
 # Register the signal handler for SIGALRM
 signal.signal(signal.SIGALRM, signal_handler)
@@ -66,9 +52,8 @@ else:
     #     save_dir = './dataset_test/'
 print(save_dir)
 
-import os
+
 folder_name = save_dir
-import sys
 # 创建文件夹
 os.mkdir(folder_name)
 os.mkdir(folder_name+"/img")
@@ -88,12 +73,6 @@ lock = multiprocessing.Lock()
 
 manager = multiprocessing.Manager()
 
-
-
-def remove_uppercase_space(input_string):
-    for char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ=':
-        input_string = input_string.replace(char, "")
-    return input_string.replace(" ", "")
 
 def gen_data(index_start, index_end, process_index, data_desc, num_analysis):
     

@@ -2,25 +2,27 @@ name: llava
 channels:
   - defaults
 dependencies:
-  - _libgcc_mutex=0.1=main
-  - _openmp_mutex=5.1=1_gnu
-  - bzip2=1.0.8=h5eee18b_6
-  - ca-certificates=2024.3.11=h06a4308_0
-  - ld_impl_linux-64=2.38=h1181459_1
-  - libffi=3.4.4=h6a678d5_1
-  - libgcc-ng=11.2.0=h1234567_1
-  - libgomp=11.2.0=h1234567_1
-  - libstdcxx-ng=11.2.0=h1234567_1
-  - libuuid=1.41.5=h5eee18b_0
-  - ncurses=6.4=h6a678d5_0
-  - openssl=3.0.13=h7f8727e_2
-  - python=3.10.14=h955ad1f_1
-  - readline=8.2=h5eee18b_0
-  - sqlite=3.45.3=h5eee18b_0
-  - tk=8.6.14=h39e8969_0
-  - xz=5.4.6=h5eee18b_1
-  - zlib=1.2.13=h5eee18b_1
+  # - _libgcc_mutex=0.1=main
+  # - _openmp_mutex=5.1=1_gnu
+  # - bzip2=1.0.8=h5eee18b_6
+  # - ca-certificates=2024.3.11=h06a4308_0
+  # - ld_impl_linux-64=2.38=h1181459_1
+  # - libffi=3.4.4=h6a678d5_1
+  # - libgcc-ng=11.2.0=h1234567_1
+  # - libgomp=11.2.0=h1234567_1
+  # - libstdcxx-ng=11.2.0=h1234567_1
+  # - libuuid=1.41.5=h5eee18b_0
+  # - ncurses=6.4=h6a678d5_0
+  # - openssl=3.0.13=h7f8727e_2
+  # - python=3.10.14=h955ad1f_1
+  # - readline=8.2=h5eee18b_0
+  # - sqlite=3.45.3=h5eee18b_0
+  # - tk=8.6.14=h39e8969_0
+  # - xz=5.4.6=h5eee18b_1
+  # - zlib=1.2.13=h5eee18b_1
   - pip:
+    - torch==2.1.2
+    - torchvision==0.16.2
     - absl-py==1.4.0
     - accelerate==0.21.0
     - aiofiles==23.2.1
@@ -45,7 +47,7 @@ dependencies:
     - fastapi-cli==0.0.3
     - ffmpy==0.3.2
     - filelock==3.14.0
-    - flash-attn==2.5.8
+    # - flash-attn==2.5.8
     - fonttools==4.51.0
     - fsspec==2024.5.0
     - gitdb==4.0.11
@@ -64,8 +66,8 @@ dependencies:
     - joblib==1.4.2
     - jsonschema==4.22.0
     - jsonschema-specifications==2023.12.1
-    - kiwisolver==1.4.5
-    - llava==1.2.2.post1
+    # - kiwisolver==1.4.5
+    # - llava==1.2.2.post1
     - markdown-it-py==3.0.0
     - markdown2==2.4.13
     - markupsafe==2.1.5
@@ -140,8 +142,6 @@ dependencies:
     - tokenizers==0.15.1
     - tomlkit==0.12.0
     - toolz==0.12.1
-    - torch==2.1.2
-    - torchvision==0.16.2
     - tqdm==4.66.4
     - transformers==4.37.2
     - triton==2.1.0

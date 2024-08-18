@@ -2,6 +2,22 @@ import random
 import string
 from graph import INTERSECT
 
+#####
+class TimeoutException(Exception):
+    """Custom exception to indicate a timeout."""
+    pass
+
+def signal_handler(signum, frame):
+    """Signal handler that raises a TimeoutException."""
+    raise TimeoutException("Operation timed out due to signal 14 (SIGALRM)")
+
+def remove_uppercase_space(input_string):
+    for char in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ=':
+        input_string = input_string.replace(char, "")
+    return input_string.replace(" ", "")
+
+#####
+
 def get_ordering_index(first_list, second_list):
     """
     Returns the indices to reorder the second list to match the order of the first list.
