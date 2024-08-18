@@ -1,6 +1,6 @@
 # ![](./readme_pic/autogeo.ico) AutoGeo: Automating Geometric Image Dataset Creation for Enhanced Geometry Understanding
 
-* An Automatic Geometry Data Synthesis Tool *
+*An Automatic Geometry Data Synthesis Tool*
 
 # Environment
 You can install the environment with this:
@@ -128,12 +128,16 @@ After you generate data, you can pretrain model on the synthesized geometry capt
 ```
 This script will tune the model and then evaluate the performance.
 
+1. Hyperparameter of Captioning Pretraining
+
 | Hyperparameter | Global Batch Size | Learning rate | Epochs | Max length | Weight decay |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | LLaVA-v1.5-7B | 64*8 | 6e-5 | 2 | 512 | 0 |
 
-| Model Setting| ViT | Projector | Language Module |
-| --- | ---: | ---: |
+2. Model Parameter Setting of Captioning Pretraining
+
+| Model Parameter Setting| ViT | Projector | Language Module |
+| --- | ---: | ---: | ---: |
 | LLaVA-v1.5-7B | Lora with lora r = 128 and lora alpha = 256 | Tunable | Frozen |
 <!-- | --- | ---: | ---: |
 | LLaVA-v1.5-13B | Lora with lora r = 128 and lora alpha = 256 | Tunable | Frozen |
@@ -148,3 +152,16 @@ After you tuned model on the synthesized data, you can further tune the model on
 ./scripts/v1_5/gqa.sh
 ```
 
+1. Hyperparameter of Geometry Q&A Tuning
+
+| Hyperparameter | Global Batch Size | Learning rate | Epochs | Max length | Weight decay |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| LLaVA-v1.5-7B(Caption Tuned) | 64*4 | 6e-5 | 3 | 512 | 0 |
+| LLaVA-v1.5-13B(Caption Tuned) | 24*4 | 6e-5 | 1 | 512 | 0 |
+
+2. Model Parameter Setting of Geometry Q&A Tuning
+
+| Model Parameter Setting| ViT | Projector | Language Module |
+| --- | ---: | ---: | ---: |
+| LLaVA-v1.5-7B | Frozen | Tunable | Lora with lora r = 256 and lora alpha = 512 |
+| LLaVA-v1.5-13B | Frozen | Tunable | Lora with lora r = 256 and lora alpha = 512 |
