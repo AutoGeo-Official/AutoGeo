@@ -110,6 +110,7 @@ with open(f"{save_dir}/data.json", "w") as file:
     file.write(json_data)
 
 ```
+</details>
 
 ## Data Synthesis Examples
 
