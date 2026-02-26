@@ -1,5 +1,5 @@
 # Data
-Code for AutoGeo date gemeration.
+Code for AutoGeo data generation.
 
 # Environment
 You can install the environment with this:
